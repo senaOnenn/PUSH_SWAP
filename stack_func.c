@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:39:50 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/17 16:24:53 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/18 17:48:28 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,26 @@ void add_back(t_stack **stack_a, t_stack *node)
     temp->next  = node; //son düğümün nextine yeni eleman bağlanır
 }
 
+void swap(t_stack **stack)
+{
+    t_stack *first;
+    t_stack *second;
+    
+    if(!*stack || !(*stack)->next)
+        return;
+    first = *stack; //ilk düğüm
+    second =  first->next; //ikinci düğüm
+    
+    first->next = second->next;//birincinin nextini güncelle
+    second->next = first; //ikinciyi öne al
+    *stack = second; //stackin başını ikinciye güncelle
+}
+
+void sa(t_stack **a)
+{
+    swap(a);
+}
+void sa(t_stack **b)
+{
+    swap(b);
+}
