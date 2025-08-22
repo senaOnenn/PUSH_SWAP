@@ -6,10 +6,11 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:50:20 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/18 19:03:58 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/22 16:06:32 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap"
 void	ss(t_stack **a, t_stack **b)
 {
 	swap(&a);
@@ -28,10 +29,29 @@ void	push(t_stack **src, t_stack **dest)
 	*dest = temp;        // hedefin başı temp
 }
 
-void rotate(t_stack **stack)
+void	rotate(t_stack **stack)
 {
-    t_stack *first;
-    t_stack *last;
-    
-    if(!*stack || !())
+	t_stack *first;
+	t_stack *last;
+
+	if (!*stack || !(stack->next))
+		return ;
+	first = *stack;
+	stack = first->next;
+	
+	last = *stack;
+	while(last->next) //listenin sonuna git
+		last = last->next;
+	last->next = first; //eski ilk elemanı sonuna ekle
+	first->next = NULL; //eksi ilk eleman şimdi son, next i null
+}
+
+void ra(t_stack **a)
+{
+    rotate(a);
+}
+
+void rb(t_stack **b)
+{
+    rotate(b);
 }
