@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:45:23 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/17 15:35:29 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/23 13:21:22 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_stack
 {
 	long			value;
+	int				index;
 	struct s_stack	*next;
 }					t_stack;
 int					is_digit(int c);
