@@ -6,15 +6,15 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:50:20 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/22 16:06:32 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/23 18:29:53 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap"
+#include "push_swap.h"
 void	ss(t_stack **a, t_stack **b)
 {
-	swap(&a);
-	swap(&b);
+	swap(a);
+	swap(b);
 }
 
 void	push(t_stack **src, t_stack **dest)
@@ -34,10 +34,10 @@ void	rotate(t_stack **stack)
 	t_stack *first;
 	t_stack *last;
 
-	if (!*stack || !(stack->next))
+	if (!*stack || !((*stack)->next))
 		return ;
 	first = *stack;
-	stack = first->next;
+	stack = &first->next;
 	
 	last = *stack;
 	while(last->next) //listenin sonuna git

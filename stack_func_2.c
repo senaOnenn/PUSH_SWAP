@@ -6,11 +6,11 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:07:17 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/22 16:39:24 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/23 18:30:41 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap"
+#include "push_swap.h"
 
 void	rr(t_stack **a, t_stack **b)
 {
@@ -25,14 +25,14 @@ void	reverse_rotate(t_stack **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	prev = NULL;
+	previous = NULL;
 	last = *stack;
 	while (last->next) // listnein sonuna git, prev sondan bir önceki olcak
 	{
-		prev = last;
+		previous = last;
 		last = last->next;
 	}
-	prev->next = NULL;   // sondan bir öncekinin bağını koparıp
+	previous->next = NULL;   // sondan bir öncekinin bağını koparıp
 	last->next = *stack; // son elemanı başa alıyoruz
 	*stack = last;       // stack başını son eleman olarak güncelle
 }
