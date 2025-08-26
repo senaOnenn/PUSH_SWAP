@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:45:23 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/26 18:38:30 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 21:20:10 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,24 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-#include <stdio.h>
-
 
 typedef struct s_stack
 {
 	long			value;
 	int				index;
+	int position;   // stack içindeki mevcut pozisyon
+	int position_b; // b deki yerine gideceği pozisyon
+	int cost_a;     // a da üste gelme maliyeti
+	int cost_b;     // b de yerine oturma maliyeti
+	int				total_cost;
 	struct s_stack	*next;
 }					t_stack;
+
+typedef struct s_cost
+{
+	int				cost_a;
+	int				cost_b;
+}					t_cost;
 
 int					is_digit(int c);
 int					is_valid(char *str);
@@ -35,7 +44,6 @@ void				swap(t_stack **stack);
 void				sa(t_stack **a);
 void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);
-void				push(t_stack **src, t_stack **dest);
 void				rotate(t_stack **stack);
 void				ra(t_stack **a);
 void				rb(t_stack **b);
@@ -44,17 +52,13 @@ void				reverse_rotate(t_stack **stack);
 void				rra(t_stack **a);
 void				rrb(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
+void				push(t_stack **src, t_stack **dest);
 void				pb(t_stack **a, t_stack **b);
 void				pa(t_stack **a, t_stack **b);
 int					stack_size(t_stack *stack);
 void				set_index(t_stack *a, int size);
-void				three_sorting(t_stack **a);
 int					find_min_index(t_stack *stack);
-void				five_sorting(t_stack **a, t_stack **b);
-void				push_chunk(t_stack **a, t_stack **b, int chunk_size,
-						int size);
 int					find_max_index(t_stack *stack);
 int					find_position(t_stack *stack, int index);
-void				get_back(t_stack **a, t_stack **b);
 
 #endif
