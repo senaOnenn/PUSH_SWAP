@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:57:36 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/17 15:32:54 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 13:30:39 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,16 @@ long ft_atol(const char *nptr)
 		i++;
 	}
 	return (result * sign);
+}
+
+void free_stack(t_stack **stack)
+{
+	t_stack *temp;
+	
+	while(*stack)
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:45:23 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/23 19:19:38 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 13:31:55 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ typedef struct s_stack
 	int				index;
 	struct s_stack	*next;
 }					t_stack;
+
 int					is_digit(int c);
 int					is_valid(char *str);
 long				ft_atol(const char *nptr);
+void				free_stack(t_stack **stack);
 t_stack				*new_node(long value);
 void				add_back(t_stack **stack_a, t_stack *node);
 void				swap(t_stack **stack);

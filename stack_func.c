@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:39:50 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/23 18:01:01 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 13:03:33 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void swap(t_stack **stack)
 void sa(t_stack **a)
 {
     swap(a);
+    write(1, "sa\n",3);
 }
 void sb(t_stack **b)
 {
     swap(b);
+    write(1, "sb\n",3);
 }

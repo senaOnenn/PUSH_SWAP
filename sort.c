@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:57:32 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/23 19:18:09 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 13:56:33 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,46 @@ void	set_index(t_stack *a, int size)
 	}
 }
 
+void three_sorting(t_stack **a)
+{
+	int first;
+	int second;
+	int third;
+	
+	first = (*a)->index;
+	second = (*a)->next->index;
+	third =(*a)->next->next->index;
+	
+	if(first > second && second < third && first < third)
+		sa(a);
+	else if(first > second && second > third)
+	{
+		sa(a);
+		rra(a);
+	}
+	else if(first > second && second < third && first > third)
+		ra(a);
+	else if(first < second && second > third && first < third)
+	{
+		sa(a);
+		ra(a);
+	}
+	else if(first < second && second > third && first > third)
+		rra(a);
+}
+
 void	push_chunk(t_stack **a, t_stack **b, int chunk_size, int size)
 {
 	int	i;
 	int	pushed_b;
 
-	(void)size;
 	i = 0;
 	pushed_b = 0;
+	if(size <= 3)
+	{
+		three_sorting(a);
+		return;
+	}
 	while (*a)
 	{
 		if ((*a)->index <= i) // sıradaki en küçük indeksi buldu
@@ -66,7 +98,6 @@ void	push_chunk(t_stack **a, t_stack **b, int chunk_size, int size)
 		{
 			pb(a, b); // chunk aralığındaki değerleri gönder
 			rb(b);    // b yi rotate et, küçükler alta kalsın
-			i++;
 			pushed_b++;
 		}
 		else

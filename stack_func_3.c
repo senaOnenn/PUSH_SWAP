@@ -6,11 +6,23 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:38:24 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/23 18:45:46 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 13:25:49 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	push(t_stack **src, t_stack **dest)
+{
+	t_stack	*temp;
+
+	if (!*src)
+		return ;
+	temp = *src;         // kaynaktaki üst eleman temp e alınır
+	*src = (*src)->next; // kaynaktaki üst eleman kaldırılır
+	temp->next = *dest;  // tempi hedefin başına alırız
+	*dest = temp;        // hedefin başı temp
+}
 
 void pb(t_stack **a, t_stack **b)
 {

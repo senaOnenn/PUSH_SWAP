@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:39:54 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/23 18:00:57 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 13:30:58 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,7 @@ int	main(int argc, char **argv)
         chunk_size = 20;
 	
 	push_chunk(&a, &b, chunk_size, size);
+	get_back(&a,&b);
+	free_stack(&a);
+
 }

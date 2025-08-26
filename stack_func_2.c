@@ -6,17 +6,11 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:07:17 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/23 18:30:41 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 13:26:35 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	rr(t_stack **a, t_stack **b)
-{
-	rotate(a);
-	rotate(b);
-}
 
 void	reverse_rotate(t_stack **stack)
 {
@@ -40,15 +34,18 @@ void	reverse_rotate(t_stack **stack)
 void	rra(t_stack **a)
 {
 	reverse_rotate(a);
+	write(1, "rra\n",4);
 }
 
 void	rrb(t_stack **b)
 {
 	reverse_rotate(b);
+	write(1, "rrb\n",4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
+	write(1, "rrr\n",4);
 }
