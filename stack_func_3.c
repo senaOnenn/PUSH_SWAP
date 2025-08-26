@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:38:24 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/26 13:25:49 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 18:43:45 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void pb(t_stack **a, t_stack **b)
     *a = (*a)->next; //a dan çıakr
     temp->next = *b;//b nin tepesine koy
     *b=temp;
+    printf("girdison\n");
     write(1,"pb\n",3);
 }
 

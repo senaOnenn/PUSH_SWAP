@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:50:20 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/26 13:26:40 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 18:43:41 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	rotate(t_stack **stack)
 void ra(t_stack **a)
 {
     rotate(a);
+	printf("girdi1\n");
 	write(1, "ra\n",3);
+
 }
 
 void rb(t_stack **b)

@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:57:32 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/26 13:56:33 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 19:27:21 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,69 +46,29 @@ void	set_index(t_stack *a, int size)
 	}
 }
 
-void three_sorting(t_stack **a)
-{
-	int first;
-	int second;
-	int third;
-	
-	first = (*a)->index;
-	second = (*a)->next->index;
-	third =(*a)->next->next->index;
-	
-	if(first > second && second < third && first < third)
-		sa(a);
-	else if(first > second && second > third)
-	{
-		sa(a);
-		rra(a);
-	}
-	else if(first > second && second < third && first > third)
-		ra(a);
-	else if(first < second && second > third && first < third)
-	{
-		sa(a);
-		ra(a);
-	}
-	else if(first < second && second > third && first > third)
-		rra(a);
-}
 
-void	push_chunk(t_stack **a, t_stack **b, int chunk_size, int size)
+int	find_min_index(t_stack *stack)
 {
-	int	i;
-	int	pushed_b;
+	int	min;
 
-	i = 0;
-	pushed_b = 0;
-	if(size <= 3)
+	if (!stack)
+		return (-1);
+	min = stack->index;
+	while (stack)
 	{
-		three_sorting(a);
-		return;
+		if (stack->index < min)
+			min = stack->index;
+		stack = stack->next;
 	}
-	while (*a)
-	{
-		if ((*a)->index <= i) // sıradaki en küçük indeksi buldu
-		{
-			pb(a, b); // a dan b ye yolla
-			i++;
-			pushed_b++;
-		}
-		else if ((*a)->index <= i + chunk_size)
-		{
-			pb(a, b); // chunk aralığındaki değerleri gönder
-			rb(b);    // b yi rotate et, küçükler alta kalsın
-			pushed_b++;
-		}
-		else
-			ra(a); // uygun chunk değilse a yı dönder
-	}
+	return (min);
 }
 
 int	find_max_index(t_stack *stack)
 {
 	int	max;
 
+	if (!stack)
+		return (-1);
 	max = stack->index;
 	while (stack)
 	{
@@ -132,28 +92,4 @@ int	find_position(t_stack *stack, int index)
 		stack = stack->next;
 	}
 	return (-1);
-}
-
-void	get_back(t_stack **a, t_stack **b)
-{
-	int max;
-	int pos;
-
-	while(*b)
-	{
-		max = find_max_index(*b);
-		pos = find_position(*b,max);
-		
-		if(pos <= stack_size(*b) /2)
-		{
-			while((*b)->index != max)
-				rb(b);
-		}
-		else
-		{
-			while((*b)->index != max)
-				rrb(b);	
-		}
-		pa(a,b); //A ya push
-	}
 }

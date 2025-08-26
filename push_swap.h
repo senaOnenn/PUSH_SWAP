@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:45:23 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/26 13:31:55 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/26 18:38:30 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+#include <stdio.h>
+
 
 typedef struct s_stack
 {
@@ -46,6 +48,9 @@ void				pb(t_stack **a, t_stack **b);
 void				pa(t_stack **a, t_stack **b);
 int					stack_size(t_stack *stack);
 void				set_index(t_stack *a, int size);
+void				three_sorting(t_stack **a);
+int					find_min_index(t_stack *stack);
+void				five_sorting(t_stack **a, t_stack **b);
 void				push_chunk(t_stack **a, t_stack **b, int chunk_size,
 						int size);
 int					find_max_index(t_stack *stack);
