@@ -6,11 +6,34 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:32:18 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/30 15:57:59 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/30 16:29:27 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+int find_target_pos_a(t_stack *a, int index_b)
+{
+	int position;
+	t_stack *current;
+	int min_index_a;
+	int max_index_a;
+	
+	position = 0;
+	current = a;
+	min_index_a = find_min_index(a);
+	max_index_a = find_max_index(a);
+	
+	if(index_b > max_index_a || index_b < min_index_a)
+		return (find_position(a, min_index_a));
+	while(current)
+	{
+		if (index_b > current->index && index_b < current->next->index)
+			return (position + 1);
+		position++;
+		current = current->next;
+	}
+	return(-1);
+}
 
 void	three_sorting(t_stack **a)
 {
@@ -56,11 +79,21 @@ void	three_sorting(t_stack **a)
 void	big_sorting(t_stack **a, t_stack **b)
 {
 	t_stack	*lowest;
-	pb(a,b);
-	pb(a,b);
+	int min_index;
+	int position;
 	
 	while (stack_size(*a) > 3)
 	{
+		min_index = find_min_index(*a);
+		position = find_position(*a, min_index);
+		
+		while((*a)->index != min_index)
+		{
+			if(position <= stack_size(*a) /2)
+				ra(a);
+			else
+				rra(a);
+		}
 		pb(a,b);
 	}
 	three_sorting(a);
@@ -88,7 +121,7 @@ void	calculate_cost(t_stack *a, t_stack *b)
 	size_b = stack_size(b);
 	while (temp)
 	{
-		position_a = find_position(a, temp->index);
+		position_a = find_target_pos_a(a, temp->index);
 		if (position_a <= size_a / 2)
 			temp->cost_a = position_a;
 		else
