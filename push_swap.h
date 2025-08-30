@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:45:23 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/26 21:20:10 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/30 14:32:56 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int					is_digit(int c);
 int					is_valid(char *str);
 long				ft_atol(const char *nptr);
 void				free_stack(t_stack **stack);
+int					is_sorted(t_stack *stack);
 t_stack				*new_node(long value);
 void				add_back(t_stack **stack_a, t_stack *node);
 void				swap(t_stack **stack);
@@ -60,5 +61,14 @@ void				set_index(t_stack *a, int size);
 int					find_min_index(t_stack *stack);
 int					find_max_index(t_stack *stack);
 int					find_position(t_stack *stack, int index);
+void				push_b(t_stack **a, t_stack **b);
+void				three_sorting(t_stack **a);
+void				big_sorting(t_stack **a, t_stack **b);
+void				calculate_cost(t_stack *a, t_stack *b);
+int					ft_abs(int n);
+t_stack				*cheapest_action(t_stack *b);
+void				move(t_stack **a, t_stack **b, t_stack *node);
+void				push_all_to_a(t_stack **a, t_stack **b);
+void				sort_stack_a(t_stack **a);
 
 #endif
