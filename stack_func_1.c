@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:50:20 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/26 19:38:24 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/30 14:48:50 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ void	rotate(t_stack **stack)
 	if (!*stack || !((*stack)->next))
 		return ;
 	first = *stack;
-	stack = &first->next;
-	
 	last = *stack;
 	while(last->next) //listenin sonuna git
 		last = last->next;
+	*stack = first->next;
+	first->next = NULL;
 	last->next = first; //eski ilk elemanı sonuna ekle
-	first->next = NULL; //eksi ilk eleman şimdi son, next i null
 }
 
 void ra(t_stack **a)

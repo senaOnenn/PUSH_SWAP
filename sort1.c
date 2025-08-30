@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:32:18 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/30 14:27:27 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/30 14:56:17 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,9 @@ void	push_b(t_stack **a, t_stack **b)
 		{
 			pb(a, b); // küçük indeksleri b ye yolla
 			write(1, "pb\n", 3);
-			rb(b); // b nin kuyruğuna at, küçükler arkada dursun
-			write(1,"rb\n",3);
-		}
-		else
-		{
-			ra(a); // büyük indeksleri direkt pushla
-			write(1,"ra\n",3);
+			
+			calculate_cost(*a,*b);
+			move(a,b,cheapest_action(*b));
 		}
 	}
 	three_sorting(a);
