@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:45:23 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/30 14:32:56 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/30 15:54:59 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void				set_index(t_stack *a, int size);
 int					find_min_index(t_stack *stack);
 int					find_max_index(t_stack *stack);
 int					find_position(t_stack *stack, int index);
-void				push_b(t_stack **a, t_stack **b);
 void				three_sorting(t_stack **a);
 void				big_sorting(t_stack **a, t_stack **b);
 void				calculate_cost(t_stack *a, t_stack *b);
