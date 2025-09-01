@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:57:36 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/30 14:34:44 by eonen            ###   ########.fr       */
+/*   Updated: 2025/09/01 12:55:02 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	is_digit(int c)
 
 int	is_valid(char *str)
 {
-	int i;
-	long number;
-	int sign;
+	int		i;
+	long	number;
+	int		sign;
 
 	i = 0;
 	number = 0;
@@ -44,10 +44,10 @@ int	is_valid(char *str)
 	return (1);
 }
 
-long ft_atol(const char *nptr)
+long	ft_atol(const char *nptr)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	result;
 
 	i = 0;
@@ -69,11 +69,11 @@ long ft_atol(const char *nptr)
 	return (result * sign);
 }
 
-void free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
-	t_stack *temp;
-	
-	while(*stack)
+	t_stack	*temp;
+
+	while (*stack)
 	{
 		temp = (*stack)->next;
 		free(*stack);
@@ -81,15 +81,15 @@ void free_stack(t_stack **stack)
 	}
 }
 
-int is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
-	if(!stack)
+	if (!stack)
 		return (1);
-	while(stack->next)
+	while (stack->next)
 	{
-		if ((stack->value) > (stack->next->value))
+		if ((stack->index) > (stack->next->index))
 			return (0);
 		stack = stack->next;
 	}
-	return(1);
+	return (1);
 }

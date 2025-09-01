@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:57:32 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/26 19:27:21 by eonen            ###   ########.fr       */
+/*   Updated: 2025/09/01 16:36:22 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,29 @@ int	stack_size(t_stack *stack)
 	return (count);
 }
 
-void	set_index(t_stack *a, int size)
+void	set_index(t_stack *a)
 {
 	t_stack	*current;
+	t_stack	*temp;
 	int		i;
 
-	(void)size;
-	while (a)
+	if (!a)
+		return ;
+	current = a;
+	while (current)
 	{
 		i = 0;
-		current = a;
-		while (current)
+		temp = a;
+		while (temp)
 		{
-			if (a->value > current->value)
+			if (current->value > temp->value)
 				i++;
-			current = current->next;
+			temp = temp->next;
 		}
-		a->index = i;
-		a = a->next;
+		current->index = i;
+		current = current->next;
 	}
 }
-
 
 int	find_min_index(t_stack *stack)
 {
@@ -81,14 +83,14 @@ int	find_max_index(t_stack *stack)
 
 int	find_position(t_stack *stack, int index)
 {
-	int	pos;
+	int	position;
 
-	pos = 0;
+	position = 0;
 	while (stack)
 	{
 		if (stack->index == index)
-			return (pos);
-		pos++;
+			return (position);
+		position++;
 		stack = stack->next;
 	}
 	return (-1);
