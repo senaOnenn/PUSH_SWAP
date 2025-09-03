@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_func_3.c                                     :+:      :+:    :+:   */
+/*   sort_cases.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 18:38:24 by eonen             #+#    #+#             */
-/*   Updated: 2025/09/03 17:02:29 by eonen            ###   ########.fr       */
+/*   Created: 2025/09/03 18:03:35 by eonen             #+#    #+#             */
+/*   Updated: 2025/09/03 18:08:15 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb(t_stack **a, t_stack **b)
+void	sort_case_1(t_stack **a)
 {
-	t_stack	*temp;
-
-	if (!*a)
-		return ;
-	temp = *a;
-	*a = (*a)->next;
-	temp->next = *b;
-	*b = temp;
-	write(1, "pb\n", 3);
+	sa(a);
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	sort_case_2(t_stack **a)
 {
-	t_stack	*temp;
+	ra(a);
+}
 
-	if (!*b)
-		return ;
-	temp = *b;
-	*b = (*b)->next;
-	temp->next = *a;
-	*a = temp;
-	write(1, "pa\n", 3);
+void	sort_case_3(t_stack **a)
+{
+	sa(a);
+	ra(a);
+}
+
+void	sort_case_4(t_stack **a)
+{
+	rra(a);
+}
+
+void	sort_case_5(t_stack **a)
+{
+	sa(a);
+	rra(a);
 }

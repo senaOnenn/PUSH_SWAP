@@ -5,93 +5,107 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 11:57:32 by eonen             #+#    #+#             */
-/*   Updated: 2025/09/01 16:36:22 by eonen            ###   ########.fr       */
+/*   Created: 2025/08/26 19:32:18 by eonen             #+#    #+#             */
+/*   Updated: 2025/09/03 18:06:10 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_size(t_stack *stack)
+void	three_sorting(t_stack **a)
 {
-	int	count;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
 
-	count = 0;
-	while (stack)
-	{
-		count++;
-		stack = stack->next;
-	}
-	return (count);
-}
-
-void	set_index(t_stack *a)
-{
-	t_stack	*current;
-	t_stack	*temp;
-	int		i;
-
-	if (!a)
+	if (!a || stack_size(*a) != 3)
 		return ;
-	current = a;
-	while (current)
-	{
-		i = 0;
-		temp = a;
-		while (temp)
-		{
-			if (current->value > temp->value)
-				i++;
-			temp = temp->next;
-		}
-		current->index = i;
-		current = current->next;
-	}
+	first = *a;
+	second = first->next;
+	third = second->next;
+	if (first->index < second->index && second->index < third->index)
+		return ;
+	else if (first->index > second->index && first->index < third->index)
+		sort_case_1(a);
+	else if (first->index > second->index && second->index < third->index
+		&& first->index > third->index)
+		sort_case_2(a);
+	else if (first->index < second->index && second->index > third->index
+		&& first->index < third->index)
+		sort_case_3(a);
+	else if (first->index < second->index && second->index > third->index
+		&& first->index > third->index)
+		sort_case_4(a);
+	else if (first->index > second->index && second->index > third->index)
+		sort_case_5(a);
 }
 
-int	find_min_index(t_stack *stack)
-{
-	int	min;
-
-	if (!stack)
-		return (-1);
-	min = stack->index;
-	while (stack)
-	{
-		if (stack->index < min)
-			min = stack->index;
-		stack = stack->next;
-	}
-	return (min);
-}
-
-int	find_max_index(t_stack *stack)
-{
-	int	max;
-
-	if (!stack)
-		return (-1);
-	max = stack->index;
-	while (stack)
-	{
-		if (stack->index > max)
-			max = stack->index;
-		stack = stack->next;
-	}
-	return (max);
-}
-
-int	find_position(t_stack *stack, int index)
+void	big_sorting(t_stack **a, t_stack **b)
 {
 	int	position;
+	int	size;
 
-	position = 0;
-	while (stack)
+	if (!a || !*a || !(*a)->next || !(*a)->next->next)
+		return ;
+	bigsorting_push_b(a, b);
+	three_sorting(a);
+	bigsorting_push_a(a, b);
+	position = find_position(*a, 0);
+	size = stack_size(*a);
+	while (position > 0)
 	{
-		if (stack->index == index)
-			return (position);
-		position++;
-		stack = stack->next;
+		if (position <= size / 2)
+			ra(a);
+		else
+			rra(a);
+		position = find_position(*a, 0);
 	}
-	return (-1);
+	sort_stack_a(a);
+}
+
+void	sort_stack_a(t_stack **a)
+{
+	int	position;
+	int	size;
+
+	position = find_position(*a, 0);
+	size = stack_size(*a);
+	while (position > 0)
+	{
+		if (position <= size / 2)
+		{
+			ra(a);
+		}
+		else
+		{
+			rra(a);
+		}
+		position = find_position(*a, 0);
+	}
+}
+
+void	bigsorting_push_b(t_stack **a, t_stack **b)
+{
+	t_stack	*cheapest;
+
+	while (stack_size(*a) > 3)
+	{
+		calculate_cost_a_to_b(*a, *b);
+		cheapest = find_cheapest_to_push(*a);
+		move_a_to_b(a, b, cheapest);
+	}
+}
+
+void	bigsorting_push_a(t_stack **a, t_stack **b)
+{
+	t_stack	*cheapest;
+
+	while (*b)
+	{
+		calculate_cost_b_to_a(*a, *b);
+		cheapest = cheapest_action(*b);
+		if (!cheapest)
+			break ;
+		move(a, b, cheapest);
+	}
 }

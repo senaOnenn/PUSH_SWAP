@@ -6,24 +6,11 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 12:54:42 by eonen             #+#    #+#             */
-/*   Updated: 2025/09/01 14:42:07 by eonen            ###   ########.fr       */
+/*   Updated: 2025/09/03 17:14:43 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	has_dup(t_stack *a, int new_value)
-{
-	if (!a)
-		return (0);
-	while (a)
-	{
-		if (a->value == new_value)
-			return (1); // Tekrar eden değer bulundu
-		a = a->next;
-	}
-	return (0); // Tekrar eden değer bulunmadı
-}
 
 void	full_free_arr(char **array)
 {
@@ -91,23 +78,22 @@ char	*seperate_words(char *str, int *i, char c)
 	word[len] = '\0';
 	return (word);
 }
+
 char	**ft_split(char *str, char c)
 {
-	int i;
-	int j;
-	int word_count;
-	char **result;
+	int		i;
+	int		j;
+	int		word_count;
+	char	**result;
 
 	if (!str)
 		return (NULL);
 	i = 0;
 	j = 0;
 	word_count = ft_word_count(str, c);
-
 	result = malloc(sizeof(char *) * (word_count + 1));
 	if (!result)
 		return (NULL);
-
 	while (j < word_count)
 	{
 		result[j] = seperate_words((char *)str, &i, c);

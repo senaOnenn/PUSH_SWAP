@@ -2,8 +2,8 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.c stack_func.c stack_func_1.c stack_func_2.c stack_func_3.c sort.c sort1.c sort2.c sort3.c\
-utils.c utils1.c
+SRC = cost_ab.c cost_ba.c main.c sort_cases.c move.c sort.c stack_func_1.c stack_func_2.c  stack_func_3.c stack_func.c \
+utils.c utils1.c utils2.c utils3.c 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
